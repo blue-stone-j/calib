@@ -1,0 +1,85 @@
+flio parameter
+calib parameter
+data buffer
+define cloud variables
+define pos and frame
+define global for EKF
+
+imu_callback
+{}
+lidar_callback
+{}
+
+main
+{
+  init parameter
+  define and init variables for EKF
+  define imu
+  debug record
+  define sub and pub
+  while(ok)
+  {
+    if(sync data)
+    {
+      process imu
+      construct map and ikdtree
+      ICP and IKF trandform update
+      // iterated state estimation
+      for(iteration)
+      {
+        for(plane points)
+        {
+          KNN
+          estimate plane
+          normal and residual
+        }
+        // measurement Jacobian H and measurents vector
+        for(plane points)
+        {
+          variance
+          if(calibed)
+          {
+            use imu update state and H
+          }
+          else
+          {
+            update H
+          }
+          update state by KF
+          if(iteration end)
+          {
+            update covariance: P, K
+          }
+        }
+      } // endfor: end iteration
+
+      pub odom and points
+      update map tree
+      if(not calibed)
+      {
+        start accumulate data
+      }
+      if(calibed)
+      {
+        save and plot calib result
+      }
+      if(calibing)
+      {
+        add lidar pose
+        judge whether data is enough
+        {
+          eigen values for rotation is large enough in three direction 
+        }
+        if(enough data)
+        {
+          calib
+          {
+            todo
+          }
+          get calib result
+          apply result in imu
+        }
+      }
+    } // end valid data
+  } //endwhile
+}
