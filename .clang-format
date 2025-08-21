@@ -123,7 +123,7 @@ ConstructorInitializerIndentWidth: 2
 # 延续的行的缩进宽度
 # ContinuationIndentWidth: 4
 
-# 去除C++11的列表初始化的大括号{后和}前的空格
+# 去除C++17的列表初始化的大括号{后和}前的空格
 Cpp11BracedListStyle: true
 
 # 继承最常用的指针和引用的对齐方式

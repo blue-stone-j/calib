@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(imu_utils)
 
-## Compile as C++11, supported in ROS Kinetic and newer
+## Compile as C++17, supported in ROS Kinetic and newer
 set(CMAKE_BUILD_TYPE "Release")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++17")
 #-DEIGEN_USE_MKL_ALL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g -fPIC")
 
@@ -15,8 +15,7 @@ find_package(catkin REQUIRED
     std_msgs
     geometry_msgs
     nav_msgs
-    code_utils
-    )
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -29,7 +28,9 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
 )
 
-catkin_package()
+catkin_package( CATKIN_DEPENDS geometry_msgs nav_msgs roscpp std_msgs
+DEPENDS EIGEN3 OpenCV Ceres 
+)
 
 set(ACC_LIB_SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/src/acc_lib/allan_acc.cpp
