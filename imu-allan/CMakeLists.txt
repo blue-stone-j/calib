@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.16.3)
 project(imu_utils)
 
 ## Compile as C++17, supported in ROS Kinetic and newer

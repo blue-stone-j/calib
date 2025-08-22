@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.16.3)
 project(lidar_imu_calib)
 
 ## Compile as C++17, supported in ROS Kinetic and newer
@@ -19,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(cmake_modules REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-find_package(PCL 1.7 REQUIRED)
+find_package(PCL REQUIRED)
 
 catkin_package(
 #  INCLUDE_DIRS include
